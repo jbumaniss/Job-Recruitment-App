@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class JobController extends Controller
 {
@@ -29,7 +30,7 @@ class JobController extends Controller
         return view('jobs.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): Redirector
     {
         $formFields = $request->validate([
             'title' => 'required',
@@ -58,7 +59,7 @@ class JobController extends Controller
         return view('jobs.edit', ['job' => $job]);
     }
 
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Job $job): RedirectResponse
     {
         if ($job->user_id != auth()->id()){
             abort(403, 'Unauthorized');
@@ -84,7 +85,7 @@ class JobController extends Controller
         return back()->with('message', 'Job updated successfully');
     }
 
-    public function destroy(Job $job)
+    public function destroy(Job $job): Redirector
     {
         $job->delete();
         return redirect('/')->with('message', 'Job deleted successfully');

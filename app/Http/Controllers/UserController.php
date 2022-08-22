@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Validation\Rule;
-use Monolog\Handler\SyslogUdp\UdpSocket;
-use phpDocumentor\Reflection\Utils;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): Redirector
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -32,7 +33,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User registered and logged in');
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): Redirector
     {
         auth()->logout();
         $request->session()->invalidate();
@@ -41,12 +42,12 @@ class UserController extends Controller
         return redirect('/')->with('message', 'You have been logged out');
     }
 
-    public function login()
+    public function login(): View
     {
         return view('users.login');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
