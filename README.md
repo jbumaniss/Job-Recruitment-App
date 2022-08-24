@@ -14,7 +14,7 @@
 # How To Set up:
 
 
-
+### ! PHP installed on your machine.
 ### ! Requirement: Mysql or any other database for information storing.
 
 ### 1. Clone or download to your chosen directory
