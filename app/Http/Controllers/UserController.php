@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function store(Request $request): Redirector
+    public function store(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -33,7 +33,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User registered and logged in');
     }
 
-    public function logout(Request $request): Redirector
+    public function logout(Request $request): RedirectResponse
     {
         auth()->logout();
         $request->session()->invalidate();

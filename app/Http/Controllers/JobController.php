@@ -30,7 +30,7 @@ class JobController extends Controller
         return view('jobs.create');
     }
 
-    public function store(Request $request): Redirector
+    public function store(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'title' => 'required',
@@ -85,7 +85,7 @@ class JobController extends Controller
         return back()->with('message', 'Job updated successfully');
     }
 
-    public function destroy(Job $job): Redirector
+    public function destroy(Job $job): RedirectResponse
     {
         $job->delete();
         return redirect('/')->with('message', 'Job deleted successfully');
