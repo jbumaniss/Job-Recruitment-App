@@ -1,108 +1,77 @@
-
-
 # Job Recruitment App
 
-# Used PHP/PHP Extensions For Laravel and etc/Laravel/Alpine.js/MySql 
-
-## Functional application for job recruitment adn job offer display.
-
----
+A functional application developed using PHP with Laravel, Alpine.js, and MySql, designed for job recruitment and job offer display.
 
 ## Main Page
-![Screenshot](screenshot.png)
+![Main Page Screenshot](screenshot.png)
 
----
+## Requirements
 
+- Git
+- Code Editor (e.g., PHPStorm or any other)
+- MySql (or any compatible database)
+- PHP
+- PHP Extensions for Laravel
 
-# Requirements:
+## Installation Guide
 
-### Git
-### Code Editor PHPSTORM or any other
-### Mysql or any other database for information storing
-### PHP
-### PHP Extensions For Laravel and etc
+### Setting Up
 
----
+1. **Clone the Repository**: 
+   Clone or download the repository to your desired directory.
 
-# How To Set up:
+2. **Terminal Setup**: 
+   Ensure the terminal is opened at the root of the chosen directory.
 
-## Execute commands specified in terminal successfully:
+3. **Editor Configuration**: 
+   Open the directory with your preferred code editor.
 
-### 1. Clone or download with Git to your chosen directory
+4. **Environment Configuration**: 
+   Rename `.env.example` file at the root to `.env`. Then, update the `.env` file with your database credentials:
 
-### 2. In your chosen directory open terminal
-#### Terminal should be open in chosen directory root!
+    DB_HOST=your_mysql_ip_address
 
-### 3. Open chosen directory with your chosen editor.
+    DB_DATABASE=your_databases_name
 
-### 4. Rename .env.example file from your chosen directory root to .env in same directory.
+    DB_USERNAME=your_mysql_username
 
-### 5. Next fill the renamed .env file from your core directory with your credentials:
-#### DB_HOST=your_mysql_ip_address
-#### DB_DATABASE=your_databases_name
-#### DB_USERNAME=your_mysql_database_username
-#### DB_PASSWORD=your_mysql_database_password if is set if not leave empty
+    DB_PASSWORD=your_mysql_password
+   
+5. **Install Dependencies**: 
+Run `composer install`. If there are any issues, use `composer install --ignore-platform-reqs`.
 
-### 6. Run composer to install required packages
-
-```
-composer install
-```
-
-#### if a command failed because of requirements try this command instead
-
-```
-composer install --ignore-platform-reqs
-```
-
-### 7. Generate app key
-
-```
+6. **Generate Application Key**:
 php artisan key:generate
-```
 
-### 8. Migrate database migrations to fill your database with all the necessary tables and columns:
+7. **Database Migration**: 
+Execute `php artisan migrate` to set up the necessary database tables and columns.
 
-```
-php artisan migrate
-```
+8. **Optional Database Seeding**:
+Populate the database with sample data using `php artisan db:seed` (not required).
 
-### 9. NOT REQUIRED! Populate database with fake text in jobs table with jobs:
+9. **Logo/Photo File Upload Configuration**:
+Create a symlink for logo file upload to make them accessible publicly:
 
-```
-php artisan db:seed
-```
+10. **Run the Application**:
+ ```
+ php artisan serv
+ ```
+ Then, navigate to the address indicated in the terminal (default: `http://127.0.0.1:8000`).
 
-### 10. File Logo/photo Upload:
-#### For logo file upload, which  go to "storage/app/public" you need to
-#### create a symlink with the following command to make them publicly accessible:
+### Accessing the Application
 
-````
-php artisan storage:link
-````
+- **Post and View Job Offers**: Register to post job offers. Viewing job offers is public and does not require registration.
 
-### 11. Run the App command:
+### Default Resources
 
-````
-php artisan serv
-````
+- Favicon: `public/images/icon.png`
+- Logo Images: `public/images/logo.png`
+- Placeholder Image: `public/images/no_image.svg`
 
-### 12. Open your browser and navigate to http://127.0.0.1:8000:
-#### or if in your terminal is written different address navigate to it in your favorite web browser
-#### or for shortcut press ctrl and left mouse button in your terminal on your generated address should open browser with served page
+## Conclusion
 
-![Screenshot](phpartisanserv.png)
-
-### 13. Register in register page to post job offers, to view job offers are public no need for registration.
-
-
-## Enjoy!
-
+Enjoy exploring the functionalities of the Job Recruitment App, a specialized platform for job postings and searches.
 
 ---
 
-
-###  Default images are located in public/images:
-#### icon.png for favicon
-#### logo.png for logo images
-#### no_image.svg for alternative image if no image exists
+**Disclaimer**: This application is designed for demonstration and educational purposes and is not recommended for production use without further modifications.
